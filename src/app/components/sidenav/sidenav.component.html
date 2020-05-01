@@ -1,0 +1,47 @@
+<!--
+<div fxLayout="column" fxHide.lt-md>
+
+  <div fxFlex>
+    -->
+    <mat-expansion-panel expanded="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            新增元件
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+
+          <mat-list-item routerLink="./user-list" (click)="menu_click()">
+            <mat-icon>insert_photo</mat-icon> 新增圖片
+          </mat-list-item>
+        </mat-nav-list>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title routerLink="./train-info" (click)="menu_click()">
+            列車資訊
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title routerLink="./alert-info" (click)="menu_click()">
+            告警資訊
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title routerLink="./driver-assist" (click)="menu_click()">
+            行車輔助
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title routerLink="./history-inquery" (click)="menu_click()">
+            歷史資料
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+  

@@ -1,0 +1,30 @@
+<div fxLayoutAlign="center center">
+  
+    <form #f="ngForm" fxFlex="80%" (submit)="OnSubmit(f)">
+        <mat-card fxLayout="column"  >
+            <mat-form-field class="input-helf-width">
+            <mat-label>島嶼名稱</mat-label>
+            <input name="IslandsName" [(ngModel)]="IslandsName" matInput>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="input-helf-width">
+                <mat-label>居民名稱</mat-label>
+                <input name="UserName" [(ngModel)]="UserName" matInput>
+            </mat-form-field>
+            <br>
+            <mat-form-field class="input-helf-width">
+                <mat-label>時區</mat-label>
+                <input name="TimeZone" [(ngModel)]="TimeZone" matInput>
+            </mat-form-field>
+            <br>
+            <button mat-stroked-button class="input-helf-width">確定</button>
+            <br>
+            <mat-form-field class="input-helf-width">
+                <mat-label>識別碼</mat-label>
+                <input disabled name="UUID" [(ngModel)]="UUID" matInput>
+            </mat-form-field>
+
+        </mat-card>
+    </form>
+
+</div>
