@@ -16,14 +16,25 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private registerService: RegisterService
-  ) { }
-
-  ngOnInit(): void {
-    this.UUIDDisable=false
+  ) {
+    this.registerService.GetUserInfoSubject().subscribe((_userInfo)=>{
+      console.log(_userInfo)
+      this.UUID=_userInfo["UUID"]
+      this.TimeZone=_userInfo["TimeZone"]
+      this.IslandsName=_userInfo["IslandsName"]
+      this.UserName=_userInfo["UserName"]
+    })
+    this.registerService.GetUserInfo()
   }
 
+  ngOnInit(): void {
+    if (this.UUID!=undefined){
+
+    }
+  }
+  
+
   public OnSubmit(form: NgForm) {
-    console.log(form.value)
     this.registerService.DoRegister(form.value)
   }
 }

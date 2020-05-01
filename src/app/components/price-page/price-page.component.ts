@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PriceService } from '../../services/price/price.service';
 
 @Component({
   selector: 'app-price-page',
@@ -11,7 +12,9 @@ export class PricePageComponent implements OnInit {
   OldPrice:object[]
   displayedColumns: string[] = ['IslandsName', 'UserName','Price'];
   mySelfPrice:number
-  constructor() { }
+  constructor(
+    private priceService:PriceService
+  ) { }
 
   ngOnInit(): void {
     this.CurrentPrice=
@@ -34,6 +37,11 @@ export class PricePageComponent implements OnInit {
         "Price":122
       },
     ]
+  }
+
+  AddPrice(){
+    console.log(this.mySelfPrice)
+    this.priceService.AddPrices(this.mySelfPrice)
   }
 
 }

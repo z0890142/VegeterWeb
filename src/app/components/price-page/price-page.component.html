@@ -5,9 +5,11 @@
         </mat-card-header>
         <div fxLayout="row" fxLayoutAlign="center center">
             <mat-form-field class="input-helf-width">
-                <mat-label>我的菜價</mat-label>
-                <input disabled [(ngModel)]="mySelfPrice" matInput>
+                <mat-label>菜價</mat-label>
+                <input type="number" placeholder="EX : 100" [(ngModel)]="mySelfPrice" matInput>
             </mat-form-field>
+            <button mat-button color="primary" (click)="AddPrice()" fxFlex="10%">發送我的菜價</button>
+
         </div>
         <br>
         <div class="mat-elevation-z1" >
