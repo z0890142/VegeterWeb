@@ -13,14 +13,17 @@ export class RegisterComponent implements OnInit {
   TimeZone:number
   UUID:string
   UUIDDisable:Boolean
+  timeZone:object[]
 
   constructor(
     private registerService: RegisterService
   ) {
+
     this.registerService.GetUserInfoSubject().subscribe((_userInfo)=>{
       console.log(_userInfo)
       this.UUID=_userInfo["UUID"]
-      this.TimeZone=_userInfo["TimeZone"]
+      // this.TimeZone=_userInfo["TimeZone"]
+      this.TimeZone=+8
       this.IslandsName=_userInfo["IslandsName"]
       this.UserName=_userInfo["UserName"]
     })
@@ -32,7 +35,7 @@ export class RegisterComponent implements OnInit {
 
     }
   }
-  
+
 
   public OnSubmit(form: NgForm) {
     this.registerService.DoRegister(form.value)

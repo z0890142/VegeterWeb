@@ -1,5 +1,5 @@
 <div fxLayoutAlign="center center">
-  
+
     <form #f="ngForm" fxFlex="80%" (submit)="OnSubmit(f)">
         <mat-card fxLayout="column"  >
             <mat-form-field class="input-helf-width">
@@ -12,10 +12,13 @@
                 <input name="UserName" [(ngModel)]="UserName" matInput>
             </mat-form-field>
             <br>
-            <mat-form-field class="input-helf-width">
-                <mat-label>時區</mat-label>
-                <input name="TimeZone" [(ngModel)]="TimeZone" matInput>
-            </mat-form-field>
+            <!-- <mat-form-field class="input-helf-width">
+              <mat-label>State</mat-label>
+              <mat-select>
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+              </mat-select>
+            </mat-form-field> -->
             <br>
             <button mat-stroked-button class="input-helf-width">確定</button>
             <br>
