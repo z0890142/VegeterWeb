@@ -4,14 +4,18 @@
         <mat-card fxLayout="column"  >
             <mat-form-field class="input-helf-width">
             <mat-label>島嶼名稱</mat-label>
-            <input name="IslandsName" [(ngModel)]="IslandsName" matInput>
+            <input placeholder="EX : 前公司快島" name="IslandsName" [(ngModel)]="IslandsName" matInput>
             </mat-form-field>
             <br>
             <mat-form-field class="input-helf-width">
                 <mat-label>居民名稱</mat-label>
-                <input name="UserName" [(ngModel)]="UserName" matInput>
+                <input placeholder="EX : 隨便拉" name="UserName" [(ngModel)]="UserName" matInput>
             </mat-form-field>
             <br>
+            <mat-form-field class="input-helf-width">
+                <mat-label>朋友編號</mat-label>
+                <input placeholder="EX : SW-1233-2222-0857" name="GameID" [(ngModel)]="GameID" matInput>
+            </mat-form-field>
             <!-- <mat-form-field class="input-helf-width">
               <mat-label>State</mat-label>
               <mat-select>

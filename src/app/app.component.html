@@ -2,26 +2,28 @@
 
   <div fxFlex fxLayout="row" class="main">
     <mat-sidenav-container fxFlex="100">
-<!-- 
-      <mat-sidenav opened  mode="side" >
-        <app-sidenav ></app-sidenav>
-      </mat-sidenav> -->
 
       <div class="content">
-        
 
-        <mat-tab-group mat-align-tabs="center" >
-          <mat-tab label="全區菜價"><app-all-price-page></app-all-price-page></mat-tab>
-          <mat-tab label="菜價"><app-price-page></app-price-page></mat-tab>
-          <mat-tab label="好友"><app-friends></app-friends></mat-tab>
-          <mat-tab label="訊息">Content 3</mat-tab>
-          <mat-tab label="設定"><app-register></app-register></mat-tab>
+
+        <mat-tab-group mat-align-tabs="center" (selectedTabChange)="onTabChanged($event)">
+          <mat-tab label="全區菜價">
+            <app-all-price-page #allPrice></app-all-price-page>
+          </mat-tab>
+          <mat-tab label="菜價">
+            <app-price-page #currentPrice></app-price-page>
+          </mat-tab>
+          <mat-tab label="好友">
+            <app-friends #friend></app-friends>
+          </mat-tab>
+          <mat-tab label="設定">
+            <app-register></app-register>
+          </mat-tab>
 
         </mat-tab-group>
- 
+
       </div>
 
     </mat-sidenav-container>
   </div>
 </div>
-  

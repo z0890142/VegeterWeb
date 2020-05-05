@@ -5,7 +5,7 @@ import { HttpClient ,HttpHeaders} from '@angular/common/http';
   providedIn: 'root'
 })
 export class PriceService {
-  host="http://192.168.50.47:80"
+  host="http://127.0.0.1:80"
 
   constructor(
     private http: HttpClient
@@ -21,21 +21,22 @@ export class PriceService {
       "UUID":userInfo["UUID"],
       "Price":price,
     }
-    this.http.post<any>(this.host+"/v1/AddPrice/",payload,options)
-    .subscribe(
-      response => {
-        console.log("addPrice : ",response)
-      })
+    return this.http.post<any>(this.host+"/v1/AddPrice",payload,options)
+    
   }
 
   GetAllPrices() {
     let options = {
       headers:new HttpHeaders().set('Content-Type', 'text/json')
     };
-    this.http.get<any>(this.host+"/v1/GrtAllPrice/",options)
-    .subscribe(
-      response => {
-        console.log(response)
-      })
+    return this.http.get<any>(this.host+"/v1/GetAllPrice",options)
+  }
+
+
+  GetPricesByUUID(uuid:string){
+    let options = {
+      headers:new HttpHeaders().set('Content-Type', 'text/json')
+    };
+    return this.http.get<any>(this.host+"/v1/GetCurrentPrice/"+uuid,options)
   }
 }

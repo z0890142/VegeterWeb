@@ -12,7 +12,7 @@ export class FriendsComponent implements OnInit {
   FriendUUID: string
   FriendList: object[]
   CheckFriendList: object[]
-  displayedColumns: string[] = ['No', 'IslandsName', 'UserName'];
+  displayedColumns: string[] = ['No', 'IslandsName', 'UserName','GameID'];
   applyColumns: string[] = ['No', 'IslandsName', 'UserName', "Confirm"];
 
   constructor(
@@ -20,46 +20,52 @@ export class FriendsComponent implements OnInit {
     private registerService: RegisterService
 
   ) {
-    this.registerService.GetUserInfoSubject().subscribe((_userInfo) => {
-      this.UUID = _userInfo["UUID"]
-    })
+    this.UUID = this.registerService.GetUUID()
   }
 
 
   ngOnInit(): void {
+    if (this.UUID!=undefined){
 
-    this.friendService.GetCheckFriendList(this.UUID)
-    this.friendService.GetFriendList(this.UUID)
+     this.friendService.GetFriendListSubject().subscribe((response:object[])=> {
+       console.log(response)
+       if (response!=undefined&&response.length>0){
+        this.FriendList=response.filter(function(friend){
+          return friend["Uuid"]!=this.UUID;
+        }.bind(this))
+       }
+      });
 
-    this.friendService.GetFriendListSubject().subscribe((response:object[])=> {
-      this.FriendList=response.filter(function(friend){
-        console.log(friend)
+      this.friendService.GetCheckFriendListSubject().subscribe((response:object[])=> {
+        this.CheckFriendList=response
+      });
 
-        return friend["Uuid"]!=this.UUID;
-      }.bind(this));
-    })
-    this.friendService.GetCheckFriendListSubject().subscribe((response:object[])=> {
-      this.CheckFriendList=response
-    })
+      this.friendService.GetCheckFriendList(this.UUID);
+      this.friendService.GetFriendList(this.UUID);
+    }
   }
 
   AddFriend(){
     let payload={
       "User1":this.UUID,
       "User2":this.FriendUUID,
-      "Relationship":1
-    }
-    this.friendService.AddFriend(payload)
+    };
+    this.FriendUUID=undefined;
+    this.friendService.AddFriend(payload);
   }
 
   ConfirmFriend(friendUUid:object){
     let payload={
       "User1":friendUUid,
       "User2":this.UUID,
-      "Relationship":2
-    }
-    this.friendService.ConfirmFriend(payload)
+    };
+    this.friendService.ConfirmFriend(payload);
 
   }
 
+
+  update() {
+    this.friendService.GetCheckFriendList(this.UUID);
+    this.friendService.GetFriendList(this.UUID);
+  }
 }

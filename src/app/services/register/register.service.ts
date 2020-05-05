@@ -15,13 +15,14 @@ export class RegisterService {
     private friendService: FriendService
   ) { }
 
-
+  host="http://127.0.0.1:80"
+  
   DoRegister(registerData: object) {
     let options = {
       headers: new HttpHeaders().set('Content-Type', 'text/json')
     };
 
-    this.http.post<any>("http://192.168.50.47:80/v1/Register", registerData, options)
+    this.http.post<any>(this.host+"/v1/Register", registerData, options)
       .subscribe(
         response => {
           registerData["UUID"] = response.ResultMessage
@@ -43,5 +44,15 @@ export class RegisterService {
 
   GetUserInfoSubject(): Subject<object> {
     return this.userInfoSubject
+  }
+
+
+  GetUUID(){
+    let _userInfo = localStorage.getItem("userInfo")
+    if (_userInfo==undefined){
+      return ""
+    }
+    
+    return JSON.parse(_userInfo).UUID
   }
 }

@@ -14,26 +14,28 @@ export class RegisterComponent implements OnInit {
   UUID:string
   UUIDDisable:Boolean
   timeZone:object[]
+  GameID:string
 
   constructor(
     private registerService: RegisterService
   ) {
 
     this.registerService.GetUserInfoSubject().subscribe((_userInfo)=>{
-      console.log(_userInfo)
-      this.UUID=_userInfo["UUID"]
-      // this.TimeZone=_userInfo["TimeZone"]
-      this.TimeZone=+8
-      this.IslandsName=_userInfo["IslandsName"]
-      this.UserName=_userInfo["UserName"]
+      if( _userInfo!=undefined){
+        this.UUID=_userInfo["UUID"]
+        // this.TimeZone=_userInfo["TimeZone"]
+        this.TimeZone=+8
+        this.GameID=_userInfo["GameID"]
+        this.IslandsName=_userInfo["IslandsName"]
+        this.UserName=_userInfo["UserName"]
+      }
+
     })
     this.registerService.GetUserInfo()
   }
 
   ngOnInit(): void {
-    if (this.UUID!=undefined){
 
-    }
   }
 
 

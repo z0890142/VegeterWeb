@@ -12,6 +12,8 @@ import { FriendsComponent } from './components/friends/friends.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { FormsModule }   from '@angular/forms';
 import { AllPricePageComponent } from './components/all-price-page/all-price-page.component';
+import { ChatPageComponent } from './components/chat-page/chat-page.component';
+import { GameFriendsComponent } from './components/game-friends/game-friends.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { AllPricePageComponent } from './components/all-price-page/all-price-pag
     PricePageComponent,
     FriendsComponent,
     SidenavComponent,
-    AllPricePageComponent
+    AllPricePageComponent,
+    ChatPageComponent,
+    GameFriendsComponent
   ],
   imports: [
     BrowserModule,
